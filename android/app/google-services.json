@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1089372211692",
+    "project_id": "noex-118ce",
+    "storage_bucket": "noex-118ce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1089372211692:android:ad6a91bf829a73150d98c9",
+        "android_client_info": {
+          "package_name": "noexis.noexis_task"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcsC-XeuXjjQnBbiwFncQ7SDx_bHpf9Pk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyBaWyyNPQz-NyxV4O6eCW53Gy2NWC6eUp8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1089372211692</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>noexis.noexisTask</string>
+	<key>PROJECT_ID</key>
+	<string>noex-118ce</string>
+	<key>STORAGE_BUCKET</key>
+	<string>noex-118ce.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1089372211692:ios:c90643431ad610ea0d98c9</string>
+</dict>
+</plist>
