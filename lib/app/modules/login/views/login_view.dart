@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:noexis_task/utils/image_utils.dart';
 import 'package:noexis_task/utils/widget_utils.dart';
 import '../controllers/login_controller.dart';
 
@@ -14,7 +15,8 @@ class LoginView extends GetView<LoginController> {
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage(
-              '/Users/endrit/Desktop/projects/task/noexis_task/assets/login.png'),
+            ImageUtility.loginBg,
+          ),
           fit: BoxFit.cover,
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:noexis_task/data/services/auth_service.dart';
+import 'package:noexis_task/utils/image_utils.dart';
 import 'package:noexis_task/utils/widget_utils.dart';
 import '../controllers/register_controller.dart';
 
@@ -19,7 +20,9 @@ class RegisterView extends GetView<RegisterController> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/register.png'),
+                image: AssetImage(
+                  ImageUtility.registerBg,
+                ),
                 fit: BoxFit.cover,
               ),
             ),
@@ -44,7 +47,6 @@ class RegisterView extends GetView<RegisterController> {
                           hintText: "Name",
                           errorText: "Name cannot be empty",
                         ),
-
                         const SizedBox(height: 20),
                         WidgetUtils.buildCustomField(
                           controller: controller.emailController,

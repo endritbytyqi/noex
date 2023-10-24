@@ -9,7 +9,7 @@ import 'package:noexis_task/db/db_helper.dart';
 import 'package:noexis_task/utils/image_utils.dart';
 
 class FavoritePlacesController extends GetxController {
-  final MapController mapController = Get.find();
+  final MapController mapController = Get.find<MapController>();
   final DatabaseHelper databaseHelper = DatabaseHelper();
 
   RxList<FavoritePlace> favoritePlaces = <FavoritePlace>[].obs;
@@ -34,13 +34,14 @@ class FavoritePlacesController extends GetxController {
   ImageProvider getImageProvider(String? imageUrl) {
     if (imageUrl != null) {
       if (imageUrl.startsWith('http') || imageUrl.startsWith('https')) {
-        return NetworkImage(imageUrl);
-      } else {
-        return AssetImage(imageUrl);
+        return NetworkImage(imageUrl); // For URLs
+      } else if (File(imageUrl).existsSync()) {
+        return FileImage(File(imageUrl)); // For local image paths
       }
-    } else {
-      return const AssetImage('assets/no_image.png');
     }
+
+    // If no image path or URL exists, show the default no_image
+    return const AssetImage(ImageUtility.noImage);
   }
 
   void filterFavoritePlaces(String query) {
@@ -63,7 +64,9 @@ class FavoritePlacesController extends GetxController {
   }
 
   void centerMapOnPlace(FavoritePlace place) {
+    mapController.shouldUpdateMap.value = true;
     mapController.centerMapOnPlace(place);
+    Get.back();
   }
 
   void showDeleteConfirmationDialog(int index) {

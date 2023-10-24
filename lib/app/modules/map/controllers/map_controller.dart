@@ -25,6 +25,8 @@ class MapController extends GetxController {
 
   GoogleMapController? mapController;
 
+  final RxBool shouldUpdateMap = false.obs;
+
   final imageUrlController = TextEditingController();
 
   void removeMarker(int placeId) {
@@ -111,6 +113,8 @@ class MapController extends GetxController {
   }
 
   void centerMapOnPlace(FavoritePlace place) {
+    shouldUpdateMap.value = true;
+
     if (mapController != null) {
       mapController!.animateCamera(
         CameraUpdate.newCameraPosition(
@@ -162,9 +166,7 @@ class MapController extends GetxController {
         authService.signOutUser();
         Get.offAllNamed('/login');
       },
-      onCancel: () {
-        Get.back();
-      },
+      onCancel: () {},
     );
 
     if (confirmed != null && confirmed) {}

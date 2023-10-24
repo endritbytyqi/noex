@@ -79,18 +79,32 @@ class MapView extends GetView<MapController> {
         ],
       ),
       body: Obx(() {
+        // Check if you should update the initialCameraPosition
+        final initialCameraPosition = controller.shouldUpdateMap.value
+            ? CameraPosition(
+                target: controller.clickedLocation.value,
+                zoom: 15,
+              )
+            : CameraPosition(
+                target: const LatLng(42.20, 21.4194),
+                zoom: 8,
+                bearing: controller.currentMapPosition.value?.bearing ?? 0,
+                tilt: controller.currentMapPosition.value?.tilt ?? 0,
+              );
+
+        // Reset the shouldUpdateMap flag
+        if (controller.shouldUpdateMap.value) {
+          controller.shouldUpdateMap.value = false;
+        }
+
         return GoogleMap(
           onMapCreated: (GoogleMapController gmcontroller) {
             controller.setMapController(gmcontroller);
           },
           markers: Set<Marker>.from(controller.markers),
           onTap: controller.onMapTap,
-          initialCameraPosition: CameraPosition(
-            target: const LatLng(42.20, 21.4194),
-            zoom: 8,
-            bearing: controller.currentMapPosition.value?.bearing ?? 0,
-            tilt: controller.currentMapPosition.value?.tilt ?? 0,
-          ),
+          initialCameraPosition:
+              initialCameraPosition, // Use the computed value
         );
       }),
     );

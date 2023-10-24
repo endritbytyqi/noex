@@ -3,6 +3,10 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 
 class ImageUtility {
+  static const String loginBg = 'assets/login.png';
+  static const String noImage = 'assets/no_image.png';
+  static const String registerBg = 'assets/register.png';
+
   final FirebaseStorage _storage = FirebaseStorage.instance;
 
   Future<String?> uploadImage(File imageFile, String storagePath) async {

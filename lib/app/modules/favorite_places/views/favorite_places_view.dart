@@ -33,7 +33,7 @@ class FavoritePlacesView extends GetView<FavoritePlacesController> {
                       child: ListTile(
                         onTap: () {
                           controller.centerMapOnPlace(place);
-                          Get.back();
+                          
                         },
                         contentPadding: const EdgeInsets.all(0.0),
                         title: Container(
