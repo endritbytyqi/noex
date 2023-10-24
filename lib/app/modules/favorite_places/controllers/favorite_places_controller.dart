@@ -34,14 +34,15 @@ class FavoritePlacesController extends GetxController {
   ImageProvider getImageProvider(String? imageUrl) {
     if (imageUrl != null) {
       if (imageUrl.startsWith('http') || imageUrl.startsWith('https')) {
-        return NetworkImage(imageUrl); // For URLs
-      } else if (File(imageUrl).existsSync()) {
-        return FileImage(File(imageUrl)); // For local image paths
+        return NetworkImage(imageUrl);
+      } else {
+        return AssetImage(imageUrl);
       }
+    } else {
+      return const AssetImage(
+        ImageUtility.noImage,
+      );
     }
-
-    // If no image path or URL exists, show the default no_image
-    return const AssetImage(ImageUtility.noImage);
   }
 
   void filterFavoritePlaces(String query) {
@@ -111,11 +112,22 @@ class FavoritePlacesController extends GetxController {
           children: [
             if (newImagePath.isNotEmpty)
               Obx(() {
-                return SizedBox(
-                  height: 200,
-                  width: 400,
-                  child: Image.file(File(newImagePath.value)),
-                );
+                if (newImagePath.value.startsWith('http') ||
+                    newImagePath.value.startsWith('https')) {
+                  // Load image from URL
+                  return Image.network(
+                    newImagePath.value,
+                    height: 200,
+                    width: 400,
+                  );
+                } else {
+                  // Load local image
+                  return Image.file(
+                    File(newImagePath.value),
+                    height: 200,
+                    width: 400,
+                  );
+                }
               }),
             ElevatedButton(
               onPressed: () async {
