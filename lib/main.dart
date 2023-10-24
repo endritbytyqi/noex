@@ -4,10 +4,13 @@ import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:noexis_task/app/routes/app_pages.dart';
 import 'package:noexis_task/data/services/auth_service.dart';
+import 'package:noexis_task/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   Get.put(AuthService());
   runApp(const MyApp());
 }
